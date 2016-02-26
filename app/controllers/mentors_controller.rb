@@ -4,7 +4,7 @@ class MentorsController < ApplicationController
   # GET /mentors
   # GET /mentors.json
   def index
-    @search = Mentor.search(params[:q])
+    @search = Mentor.paginate(:page => params[:page], :per_page => 20).search(params[:q])
     @mentors = @search.result
     #@mentors = @q.result.includes(:name)
   end
