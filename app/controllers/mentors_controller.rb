@@ -4,7 +4,9 @@ class MentorsController < ApplicationController
   # GET /mentors
   # GET /mentors.json
   def index
-    @mentors = Mentor.all
+    @search = Mentor.search(params[:q])
+    @mentors = @search.result
+    #@mentors = @q.result.includes(:name)
   end
 
   # GET /mentors/1
@@ -70,5 +72,9 @@ class MentorsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def mentor_params
       params.require(:mentor).permit(:name, :email, :occupation, :company)
+    end
+
+    def filtering_params
+      params.slice(:name, :occupation, :company)
     end
 end
