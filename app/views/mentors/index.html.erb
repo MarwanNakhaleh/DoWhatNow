@@ -5,7 +5,10 @@
 <%= search_form_for @search do |f| %>
   <%= f.label :name_cont, "Name contains: " %>
   <%= f.search_field :name_cont %>
-
+  <%= f.label :company_cont, "Company contains: " %>
+  <%= f.search_field :company_cont %>
+  <%= f.label :occupation_cont, "Occupation contains: " %>
+  <%= f.search_field :occupation_cont %>
   <%= f.submit %>
 <% end %>
 
